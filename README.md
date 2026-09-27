@@ -16,6 +16,11 @@ Try the published version at https://yang-chen66.github.io/one-less-form/ or ope
 2. Select **Use saved profile**. Review the three existing details and continue without typing.
 3. After either result, use **Try the other flow** to compare the two.
 
+## Project notes
+
+- [Design document](DESIGN.md): the original problem, brainstorming, intended interaction, and scope.
+- [Learning notes](LEARNING_NOTES.md): questions, issues, tests, progress, and open questions from building the prototype.
+
 ## AI tool, selected directions, and decisions
 
 I used Codex in ChatGPT to make the HTML, CSS, and JavaScript. These are selected directions from our work, paraphrased rather than quoted as a transcript:
