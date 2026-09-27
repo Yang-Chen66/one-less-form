@@ -10,21 +10,25 @@ The business and details shown here are fictional. This is a front-end simulatio
 
 ## Open the project
 
-Open `index.html` in a browser. No installation, account, or server is needed. You can also serve the folder locally with `python3 -m http.server 8000` and open `http://localhost:8000`.
+Try the published version at https://yang-chen66.github.io/one-less-form/ or open `index.html` in a browser. No installation, account, or server is needed. You can also serve the folder locally with `python3 -m http.server 8000` and open `http://localhost:8000`.
 
 1. Begin with **Start from scratch**. Try **Continue** with the fields empty, then enter a business name, valid email, and tax ID.
 2. Select **Use saved profile**. Review the three existing details and continue without typing.
 3. After either result, use **Try the other flow** to compare the two.
 
-## AI tool and selected directions
+## AI tool, selected directions, and decisions
 
-I used Codex in ChatGPT to make the HTML, CSS, and JavaScript. My starting direction came from my real experience: build a small, browser-based interaction around the repeated business information in merchant onboarding. I chose that idea over extending an earlier Bad Volume Control classroom exercise because the seller flow gave me a specific user and a specific design problem. The intended behavior I gave AI was to let someone compare manual re-entry with reviewing saved information, while keeping the scope to one step rather than claiming to implement a whole platform.
+I used Codex in ChatGPT to make the HTML, CSS, and JavaScript. These are selected directions from our work, paraphrased rather than quoted as a transcript:
 
-One useful exchange during implementation concerned the switching behavior. The first version hid the form fields with HTML's `hidden` attribute, but the CSS also declared `.fields { display: grid; }`, which could override the browser's default hidden style. We added `[hidden] { display: none !important; }` and reset the step label on mode changes. A later browser check revealed that the explanation below the form still described the previous result after changing modes, so we reset that text as well. Those were small changes, but they mattered: the comparison only makes sense if switching flows leaves a coherent screen.
+1. Start from my experience simplifying merchant onboarding: make one small browser interaction about information a seller has already provided, with a clear user and design problem. I chose this over extending an earlier Bad Volume Control classroom exercise.
+2. Let someone compare manually re-entering business details with reviewing a saved seller profile. When they choose the saved profile, show the existing details and let them continue without retyping. Keep the scope to one step, not a whole registration platform.
+3. Check both paths and mode changes in the browser. When a screen retains text or fields from the previous path, investigate the cause and revise it.
+
+One useful exchange during implementation concerned the switching behavior. The first version hid the form fields with HTML's `hidden` attribute, but the CSS also declared `.fields { display: grid; }`, which could override the browser's default hidden style. We added `[hidden] { display: none !important; }` and reset the step label on mode changes. A later browser check revealed that the explanation below the form still described the previous result after changing modes, so we reset that text as well. Those changes mattered: the comparison only makes sense if switching flows leaves a coherent screen.
 
 ## What I tested and changed
 
-I ran the interaction logic through a DOM-based test with these cases: continuing with three empty fields shows an error; an invalid email is rejected; valid manual entry reaches the manual result; switching to the saved-profile mode hides the inputs and shows the review card; continuing reaches the saved-profile result; and switching back restores the initial step label. I also clicked through the main paths in a Chromium browser and inspected the page at desktop size. The checks passed after the visibility and reset changes. The app is intentionally static and has no backend, so these checks do not establish how account data would behave in a real system.
+With Codex, I checked the interaction logic through a DOM-based test: continuing with three empty fields shows an error; an invalid email is rejected; valid manual entry reaches the manual result; switching to the saved-profile mode hides the inputs and shows the review card; continuing reaches the saved-profile result; and switching back restores the initial step label. We also clicked through the main paths in a Chromium browser and inspected the page at desktop size. I tried both flows in the browser myself. The checks passed after the visibility and reset changes. The app is intentionally static and has no backend, so these checks do not establish how account data would behave in a real system.
 
 ## Reflection
 
